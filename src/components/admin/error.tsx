@@ -57,29 +57,20 @@ export const Error = (props: InternalErrorProps & {}) => {
                 Check the{" "}
                 <a
                   className="text-primary underline-offset-4 hover:underline"
-                  href="https://marmelab.com/shadcn-admin-kit/docs"
+                  href="https://www.zing.work/support"
                 >
-                  shadcn-admin-kit documentation
+                  ZingIQ documentation
                 </a>
               </li>
               <li>
-                Search on{" "}
+                Contact{" "}
                 <a
                   className="text-primary underline-offset-4 hover:underline"
-                  href="https://stackoverflow.com/questions/tagged/shadcn-admin-kit"
+                  href="https://www.zing.work/contact"
                 >
-                  StackOverflow
+                  Zing Support
                 </a>{" "}
-                for community answers
-              </li>
-              <li>
-                Get help from the core team via{" "}
-                <a
-                  className="text-primary underline-offset-4 hover:underline"
-                  href="https://marmelab.com/shadcn-admin-kit/"
-                >
-                  Shadcn Enterprise Edition
-                </a>
+                for assistance
               </li>
             </ul>
           </div>

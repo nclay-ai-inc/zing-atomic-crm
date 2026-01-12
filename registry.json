@@ -1,13 +1,13 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry.json",
-  "name": "atomic-crm",
-  "homepage": "https://marmelab.com/atomic-crm/",
+  "name": "zingiq",
+  "homepage": "https://www.zing.work/zingiq/",
   "items": [
     {
-      "name": "atomic-crm",
+      "name": "zingiq",
       "type": "registry:block",
-      "title": "Atomic CRM",
-      "description": "A fully fledged CRM application built with Shadcn Admin Kit",
+      "title": "ZingIQ",
+      "description": "A business intelligence platform for small businesses built with Shadcn Admin Kit",
       "registryDependencies": [
         "progress",
         "tabs",

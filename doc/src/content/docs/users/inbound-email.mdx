@@ -1,9 +1,9 @@
 ---
 title: Inbound Email
-description: This document explains how to use inbound email in Atomic CRM.
+description: This document explains how to use inbound email in ZingIQ.
 ---
 
-Atomic CRM can receive inbound emails and automatically create or update contacts based on the email content. This feature is useful to keep your CRM up-to-date with the latest interactions with your contacts.
+ZingIQ can receive inbound emails and automatically create or update contacts based on the email content. This feature is useful to keep your CRM up-to-date with the latest interactions with your contacts.
 
 ## Setup
 
@@ -11,13 +11,13 @@ You must setup Postmark and Supabase to use the inbound email feature. Check the
 
 ## Usage
 
-Send of forward emails to Atomic CRM's inbound email address to automatically add notes to the corresponding contacts. You can find this email address in the user menu by clicking on the "My Info" menu item, in the "Inbound Email" section. It looks like `xxxxxxx@inbound.postmarkapp.com`.
+Send of forward emails to ZingIQ's inbound email address to automatically add notes to the corresponding contacts. You can find this email address in the user menu by clicking on the "My Info" menu item, in the "Inbound Email" section. It looks like `xxxxxxx@inbound.postmarkapp.com`.
 
 ![Inbound Email Address](../../images/inbound-email.jpg)
 
-When you write to a contact in your email client, add the inbound email address in the **Bcc** field. PPostmark will receive a copy of your email, and forward it to Atomic CRM. Atomic CRM uses the sender's email address to identify the user, and the recipient's email address to identify the contact. If the contact does not yet exist, Atomic CRM creates it using the email's domain as company name. The content of the email is added as a note to the contact.
+When you write to a contact in your email client, add the inbound email address in the **Bcc** field. PPostmark will receive a copy of your email, and forward it to ZingIQ. ZingIQ uses the sender's email address to identify the user, and the recipient's email address to identify the contact. If the contact does not yet exist, ZingIQ creates it using the email's domain as company name. The content of the email is added as a note to the contact.
 
-**Tip**: Use the **Bcc** field to send emails to Atomic CRM without notifying the recipients.
+**Tip**: Use the **Bcc** field to send emails to ZingIQ without notifying the recipients.
 
 ## Example
 
@@ -33,7 +33,7 @@ Hi Kim,
 I would like to schedule a meeting with you next week. Please let me know your availability.
 ```
 
-When receiving this email, Atomic CRM will:
+When receiving this email, ZingIQ will:
 
 - Create the _Acme_ company if it does not exist
 - Create the _Kim Hegmann_ contact if it does not exist

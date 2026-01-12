@@ -35,11 +35,12 @@ export const addNoteToContact = async ({
     );
   }
 
-  // Check if the contact already exists
+  // Check if the contact already exists (within same organization)
   const { data: existingContact, error: fetchContactError } =
     await supabaseAdmin
       .from("contacts")
       .select("*")
+      .eq("organization_id", sales.organization_id)
       .contains("email_jsonb", JSON.stringify([{ email }]))
       .maybeSingle();
   if (fetchContactError)
@@ -55,11 +56,12 @@ export const addNoteToContact = async ({
   } else {
     // If the contact does not exist, we need to create it, along with the company if needed
 
-    // Check if the company already exists
+    // Check if the company already exists (within same organization)
     const { data: existingCompany, error: fetchCompanyError } =
       await supabaseAdmin
         .from("companies")
         .select("*")
+        .eq("organization_id", sales.organization_id)
         .eq("name", domain)
         .maybeSingle();
     if (fetchCompanyError)
@@ -76,7 +78,7 @@ export const addNoteToContact = async ({
       const { data: newCompanies, error: createCompanyError } =
         await supabaseAdmin
           .from("companies")
-          .insert({ name: domain, sales_id: sales.id })
+          .insert({ name: domain, sales_id: sales.id, organization_id: sales.organization_id })
           .select();
       if (createCompanyError)
         return new Response(
@@ -95,6 +97,7 @@ export const addNoteToContact = async ({
         email_jsonb: [{ email, type: "Work" }],
         company_id: company.id,
         sales_id: sales.id,
+        organization_id: sales.organization_id,
         first_seen: new Date(),
         last_seen: new Date(),
         tags: [],
@@ -115,6 +118,7 @@ export const addNoteToContact = async ({
       contact_id: contact.id,
       text: noteContent,
       sales_id: sales.id,
+      organization_id: sales.organization_id,
     });
   if (createNoteError)
     return new Response(

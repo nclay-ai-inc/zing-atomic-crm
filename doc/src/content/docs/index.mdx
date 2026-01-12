@@ -1,10 +1,10 @@
 ---
 title: Getting Started
-description: Atomic CRM is designed to be easy to customize and extend by developers with basic React and SQL skills.
+description: ZingIQ is designed to be easy to customize and extend by developers with basic React and SQL skills.
 ---
 
 
-Atomic CRM is designed to be easy to customize and extend by developers with basic React and SQL skills. This guide will help you get started with installing, configuring, and deploying Atomic CRM.
+ZingIQ is designed to be easy to customize and extend by developers with basic React and SQL skills. This guide will help you get started with installing, configuring, and deploying ZingIQ.
 
 ## Prerequisites
 
@@ -16,7 +16,7 @@ Atomic CRM is designed to be easy to customize and extend by developers with bas
 
 ## Installation
 
-1. Fork the Atomic CRM repository on GitHub to your own account.
+1. Fork the ZingIQ repository on GitHub to your own account.
 
     ![Fork the repository](../images/atomic-crm-repository.png)
 
@@ -47,7 +47,7 @@ Atomic CRM is designed to be easy to customize and extend by developers with bas
     npm run dev
     ```
 
-Atomic CRM now runs at [http://localhost:5173/](http://localhost:5173/).
+ZingIQ now runs at [http://localhost:5173/](http://localhost:5173/).
 
 ![Welcome Screen](../images/welcome-screen.png)
 
@@ -70,7 +70,7 @@ Once the admin user is created, you will be redirected to the dashboard. It's cu
 
 ## Bootstrapping with Sample Data
 
-It's easier to develop on a non-empty application. Atomic CRM provides a sample dataset you can import to get started. Click the import button and choose the sample data file at `test-data/contacts.csv`. This will add 500 contacts and 55 companies to your local database.
+It's easier to develop on a non-empty application. ZingIQ provides a sample dataset you can import to get started. Click the import button and choose the sample data file at `test-data/contacts.csv`. This will add 500 contacts and 55 companies to your local database.
 
 ![Import dialog](../images/import.png)
 
@@ -84,7 +84,7 @@ If you need to reset the database, stop the Supabase instance with `npx supabase
 
 ## Configuring the Application
 
-The entry point of the application is the `src/App.tsx` file. By default, this file simply renders the `<CRM>` component, which is the root component of Atomic CRM.
+The entry point of the application is the `src/App.tsx` file. By default, this file simply renders the `<CRM>` component, which is the root component of ZingIQ.
 
 ```tsx
 import { CRM } from "@/components/atomic-crm/root/CRM";
@@ -112,11 +112,11 @@ export default App;
 
 ![Customized Title](../images/customized-title.png)
 
-Check the [Customizing Atomic CRM](./developers/customizing) guide for an exhaustive list of configuration settings you can customize.
+Check the [Customizing ZingIQ](./developers/customizing) guide for an exhaustive list of configuration settings you can customize.
 
 ## Adding Custom Fields
 
-You can extend the data model of Atomic CRM by adding custom fields to the existing entities (Contacts, Companies, Deals, Notes, and Tasks).
+You can extend the data model of ZingIQ by adding custom fields to the existing entities (Contacts, Companies, Deals, Notes, and Tasks).
 
 You will do so in the Supabase Studio. To access the Studio, go to [http://localhost:54323/](http://localhost:54323/).
 
@@ -125,7 +125,7 @@ You will do so in the Supabase Studio. To access the Studio, go to [http://local
 We're going to add a custom field to the Contacts table: a "Referred By" text field to store the name of the person who referred the contact.
 
 1. Click on the Database menu
-2. Choose the Tables section in the Database management panel. You will see the list of tables used by Atomic CRM.
+2. Choose the Tables section in the Database management panel. You will see the list of tables used by ZingIQ.
 3. Click on the `contacts` table in the list of tables.
 4. Click on the "New Column" button to add a new column to the table.
 
@@ -140,7 +140,7 @@ We're going to add a custom field to the Contacts table: a "Referred By" text fi
 
     ![Supabase New Column](../images/supabase-new-column.png)
 
-Atomic CRM uses views to simplify the queries. You need to update the `contacts_summary` view to include the new `referred_by` field.
+ZingIQ uses views to simplify the queries. You need to update the `contacts_summary` view to include the new `referred_by` field.
 
 1. Click on the "SQL Editor" menu in the left sidebar.
 2. Enter the following SQL query to update the `contacts_summary` view:
@@ -185,10 +185,10 @@ Next, you need to make this new field available in the frontend.
 The frontend code lives in the `src/components/atomic-crm` folder, and is organized by entities. Each entity has its own folder containing all the components related to that entity. Take a few minutes to explore the codebase and familiarize yourself with its structure.
 
 :::tip
-Atomic CRM leverages two libraries that provided high-level building blocks: [Shadcn Admin Kit](https://marmelab.com/shadcn-admin-kit/) for the application logic, and [Shadcn/ui](https://ui.shadcn.com/) for the UI components. The code for these libraries is copied in the `src/components` folder.
+ZingIQ leverages two libraries that provided high-level building blocks: [Shadcn Admin Kit](https://marmelab.com/shadcn-admin-kit/) for the application logic, and [Shadcn/ui](https://ui.shadcn.com/) for the UI components. The code for these libraries is copied in the `src/components` folder.
 :::
 
-Atomic CRM uses TypeScript to ensure type safety, so you'll need to modify the `Contact` type to include the new `referred_by` field. Open the `src/components/atomic-crm/types.ts` file and add the `referred_by` field to the `Contact` interface.
+ZingIQ uses TypeScript to ensure type safety, so you'll need to modify the `Contact` type to include the new `referred_by` field. Open the `src/components/atomic-crm/types.ts` file and add the `referred_by` field to the `Contact` interface.
 
 ```tsx {18}
 export type Contact = {
@@ -290,11 +290,11 @@ This will display the "Referred By" information in the contact sidebar when avai
 
 ## Deploying to Production
 
-It's time to deploy your customized version of Atomic CRM to production. You use [Supabase.com](https://supabase.com) to host the backend, and GitHub Pages to host the frontend. Both services offer free plans that are sufficient for Atomic CRM.
+It's time to deploy your customized version of ZingIQ to production. You use [Supabase.com](https://supabase.com) to host the backend, and GitHub Pages to host the frontend. Both services offer free plans that are sufficient for ZingIQ.
 
 First, login or register to [Supabase.com](https://supabase.com).
 
-Atomic CRM comes with a CLI utility to create a backend instance on Supabase.com:
+ZingIQ comes with a CLI utility to create a backend instance on Supabase.com:
 
 ```sh
 make supabase-remote-init
@@ -302,7 +302,7 @@ make supabase-remote-init
 
 The script will ask you for the Supabase instance name, create the database, apply the migrations and deploy the edge functions. Finally, it will create a `.env.production.local` file with your remote Supabase configuration.
 
-The frontend of the CRM is a Single-Page App that can be deployed to any CDN. Since you have forked the Atomic CRM repository on GitHub, you can use GitHub Pages to host the frontend.
+The frontend of the CRM is a Single-Page App that can be deployed to any CDN. Since you have forked the ZingIQ repository on GitHub, you can use GitHub Pages to host the frontend.
 
 First, build the frontend bundle with:
 
@@ -322,15 +322,15 @@ After a couple minutes, your customized CRM will be available at `https://<usern
 
 You can proceed with the creation of the first admin user and start using your CRM in production!
 
-![Atomic CRM in Production](../images/atomic-crm-demo.png)
+![ZingIQ in Production](../images/atomic-crm-demo.png)
 
 :::tip
-Supabase.com and GitHub Pages are just two of the many services you can use to host your Atomic CRM. You can [self-host a supabase instace](https://supabase.com/docs/guides/self-hosting), and use any static server or CDN (e.g. CloudFlare, Netlify, Vercel, etc.) to host the frontend.
+Supabase.com and GitHub Pages are just two of the many services you can use to host your ZingIQ. You can [self-host a supabase instace](https://supabase.com/docs/guides/self-hosting), and use any static server or CDN (e.g. CloudFlare, Netlify, Vercel, etc.) to host the frontend.
 :::
 
 ## Next Steps
 
-Explore the documentation to learn more about Atomic CRM:
+Explore the documentation to learn more about ZingIQ:
 
 ### User Documentation
 

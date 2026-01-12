@@ -18,6 +18,9 @@ const baseAuthProvider = supabaseAuthProvider(supabase, {
       id: sale.id,
       fullName: `${sale.first_name} ${sale.last_name}`,
       avatar: sale.avatar?.src,
+      email: sale.email,
+      organization_id: sale.organization_id,
+      organization_name: sale.organization?.name,
     };
   },
 });
@@ -116,7 +119,7 @@ const getSaleFromCache = async () => {
 
   const { data: dataSale, error: errorSale } = await supabase
     .from("sales")
-    .select("id, first_name, last_name, avatar, administrator")
+    .select("id, first_name, last_name, email, avatar, administrator, organization_id, organization:organizations(name)")
     .match({ user_id: dataSession?.session?.user.id })
     .single();
 

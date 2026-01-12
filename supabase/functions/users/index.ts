@@ -49,10 +49,15 @@ async function inviteUser(req: Request, currentUserSale: any) {
     return createErrorResponse(401, "Not Authorized");
   }
 
+  // Pass organization_id so invited user joins the same org
   const { data, error: userError } = await supabaseAdmin.auth.admin.createUser({
     email,
     password,
-    user_metadata: { first_name, last_name },
+    user_metadata: {
+      first_name,
+      last_name,
+      organization_id: currentUserSale.organization_id,
+    },
   });
 
   const { error: emailError } =
@@ -103,6 +108,11 @@ async function patchUser(req: Request, currentUserSale: any) {
     .single();
 
   if (!sale) {
+    return createErrorResponse(404, "Not Found");
+  }
+
+  // Ensure user belongs to same organization (multi-tenancy isolation)
+  if (sale.organization_id !== currentUserSale.organization_id) {
     return createErrorResponse(404, "Not Found");
   }
 

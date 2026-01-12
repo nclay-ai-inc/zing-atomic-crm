@@ -25,7 +25,7 @@ export const generateSales = (_: Db): Sale[] => {
       user_id: "0",
       first_name: "Jane",
       last_name: "Doe",
-      email: "janedoe@atomic.dev",
+      email: "janedoe@zing.work",
       password: "demo",
       administrator: true,
       avatar: {

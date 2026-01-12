@@ -1,13 +1,13 @@
 ---
 title: Data Providers
-description: This document explains the data providers used in the development of Atomic CRM.
+description: This document explains the data providers used in the development of ZingIQ.
 ---
 
-By default, the Atomic CRM uses [Supabase](https://supabase.com) for the backend API. Supabase is an open-source alternative to Firebase, built on top of Postgres. It provides a REST API and a real-time subscription system. The generous free tier allows you to run a small CRM for free.
+By default, the ZingIQ uses [Supabase](https://supabase.com) for the backend API. Supabase is an open-source alternative to Firebase, built on top of Postgres. It provides a REST API and a real-time subscription system. The generous free tier allows you to run a small CRM for free.
 
 ## Using Test Data
 
-Developing features with an empty database can be challenging. To help with this, Atomic CRM includes a CSV file with test data that can be imported into the application.
+Developing features with an empty database can be challenging. To help with this, ZingIQ includes a CSV file with test data that can be imported into the application.
 
 To import the test data, follow these steps:
 
@@ -32,7 +32,7 @@ This will start the application on [http://localhost:5173/](http://localhost:517
 If you add custom fields and want them to be included in the FakeRest data, you can modify the data generator logic located in the [`src/components/atomic-crm/providers/fakerest/dataGenerator`](https://github.com/marmelab/atomic-crm/blob/main/src/components/atomic-crm/providers/fakerest/dataGenerator/) directory.
 
 :::tip
-The [Atomic CRM demo](https://marmelab.com/atomic-crm-demo/) also uses FakeRest. Check it out to see how it works!
+Try running `npm run dev:demo` to see FakeRest in action with sample data!
 :::
 
 ### Setting Up The FakeRest Data Provider

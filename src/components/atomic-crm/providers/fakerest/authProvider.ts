@@ -8,7 +8,7 @@ export const DEFAULT_USER = {
   id: 0,
   first_name: "Jane",
   last_name: "Doe",
-  email: "janedoe@atomic.dev",
+  email: "janedoe@zing.work",
   password: "demo",
   administrator: true,
   avatar: {
@@ -69,6 +69,9 @@ export const authProvider: AuthProvider = {
       id: user?.id ?? 0,
       fullName: user ? `${user.first_name} ${user.last_name}` : "Jane Doe",
       avatar: user?.avatar?.src,
+      email: user?.email,
+      organization_id: user?.organization_id,
+      organization_name: undefined, // FakeRest doesn't have organizations
     });
   },
   async getAuthorizationDetails() {

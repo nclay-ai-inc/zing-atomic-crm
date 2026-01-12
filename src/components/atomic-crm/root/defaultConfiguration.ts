@@ -1,9 +1,9 @@
 import { Mars, NonBinary, Venus } from "lucide-react";
 
-export const defaultDarkModeLogo = "./logos/logo_atomic_crm_dark.svg";
-export const defaultLightModeLogo = "./logos/logo_atomic_crm_light.svg";
+export const defaultDarkModeLogo = "./logos/zing-logo.png";
+export const defaultLightModeLogo = "./logos/zing-logo.png";
 
-export const defaultTitle = "Atomic CRM";
+export const defaultTitle = "ZingIQ";
 
 export const defaultCompanySectors = [
   "Communication Services",
@@ -39,10 +39,10 @@ export const defaultDealCategories = [
 ];
 
 export const defaultNoteStatuses = [
-  { value: "cold", label: "Cold", color: "#7dbde8" },
-  { value: "warm", label: "Warm", color: "#e8cb7d" },
-  { value: "hot", label: "Hot", color: "#e88b7d" },
-  { value: "in-contract", label: "In Contract", color: "#a4e87d" },
+  { value: "cold", label: "Cold", color: "#00D4FF" }, // Zing Cyan
+  { value: "warm", label: "Warm", color: "#6366F1" }, // Zing Purple
+  { value: "hot", label: "Hot", color: "#E95614" }, // Zing Orange
+  { value: "in-contract", label: "In Contract", color: "#7C3AED" }, // Zing Violet
 ];
 
 export const defaultTaskTypes = [

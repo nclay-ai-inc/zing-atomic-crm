@@ -84,11 +84,21 @@ export const SignupPage = () => {
       </div>
       <div className="h-full">
         <div className="max-w-sm mx-auto h-full flex flex-col justify-center gap-4">
-          <h1 className="text-2xl font-bold mb-4">Welcome to Atomic CRM</h1>
+          <h1 className="text-2xl font-bold mb-4">Welcome to ZingIQ</h1>
           <p className="text-base mb-4">
-            Create the first user account to complete the setup.
+            Create your organization and first account to start using your business intelligence platform.
           </p>
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+            <div className="flex flex-col gap-2">
+              <Label htmlFor="organization_name">Organization name</Label>
+              <Input
+                {...register("organization_name", { required: true })}
+                id="organization_name"
+                type="text"
+                placeholder="e.g. Acme Corp"
+                required
+              />
+            </div>
             <div className="flex flex-col gap-2">
               <Label htmlFor="first_name">First name</Label>
               <Input

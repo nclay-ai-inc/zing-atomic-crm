@@ -22,6 +22,8 @@ const Header = () => {
     currentPath = "/companies";
   } else if (matchPath("/deals/*", location.pathname)) {
     currentPath = "/deals";
+  } else if (matchPath("/analytics/*", location.pathname)) {
+    currentPath = "/analytics";
   } else {
     currentPath = false;
   }
@@ -68,6 +70,11 @@ const Header = () => {
                   label="Deals"
                   to="/deals"
                   isActive={currentPath === "/deals"}
+                />
+                <NavigationTab
+                  label="Analytics"
+                  to="/analytics"
+                  isActive={currentPath === "/analytics"}
                 />
               </nav>
             </div>

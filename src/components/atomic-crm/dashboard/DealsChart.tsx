@@ -98,7 +98,7 @@ export const DealsChart = memo(() => {
           data={months}
           indexBy="date"
           keys={["won", "pending", "lost"]}
-          colors={["#61cdbb", "#97e3d5", "#e25c3b"]}
+          colors={["#00D4FF", "#6366F1", "#E95614"]}
           margin={{ top: 30, right: 50, bottom: 30, left: 0 }}
           padding={0.3}
           valueScale={{
@@ -176,7 +176,7 @@ export const DealsChart = memo(() => {
                 axis: "y",
                 value: 0,
                 lineStyle: { strokeOpacity: 0 },
-                textStyle: { fill: "#2ebca6" },
+                textStyle: { fill: "#00D4FF" },
                 legend: "Won",
                 legendPosition: "top-left",
                 legendOrientation: "vertical",
@@ -185,10 +185,10 @@ export const DealsChart = memo(() => {
                 axis: "y",
                 value: 0,
                 lineStyle: {
-                  stroke: "#f47560",
+                  stroke: "#E95614",
                   strokeWidth: 1,
                 },
-                textStyle: { fill: "#e25c3b" },
+                textStyle: { fill: "#E95614" },
                 legend: "Lost",
                 legendPosition: "bottom-left",
                 legendOrientation: "vertical",

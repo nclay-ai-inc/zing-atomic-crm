@@ -5,9 +5,10 @@ import { Error } from "@/components/admin/error";
 import { Skeleton } from "@/components/ui/skeleton";
 
 import Header from "./Header";
+import { AnalyticsProvider } from "../analytics";
 
 export const Layout = ({ children }: { children: ReactNode }) => (
-  <>
+  <AnalyticsProvider>
     <Header />
     <main className="max-w-screen-xl mx-auto pt-4 px-4" id="main-content">
       <ErrorBoundary FallbackComponent={Error}>
@@ -17,5 +18,5 @@ export const Layout = ({ children }: { children: ReactNode }) => (
       </ErrorBoundary>
     </main>
     <Notification />
-  </>
+  </AnalyticsProvider>
 );

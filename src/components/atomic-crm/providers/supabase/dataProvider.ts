@@ -102,7 +102,7 @@ const dataProviderWithCustomMethods = {
     return baseDataProvider.getOne(resource, params);
   },
 
-  async signUp({ email, password, first_name, last_name }: SignUpData) {
+  async signUp({ email, password, first_name, last_name, organization_name }: SignUpData) {
     const response = await supabase.auth.signUp({
       email,
       password,
@@ -110,6 +110,7 @@ const dataProviderWithCustomMethods = {
         data: {
           first_name,
           last_name,
+          organization_name,
         },
       },
     });
@@ -361,6 +362,38 @@ const applyFullTextSearch = (columns: string[]) => (params: GetListParams) => {
   };
 };
 
+/**
+ * Get the current user's organization_id from the sales table
+ * Required for multi-tenant file storage isolation
+ */
+let cachedOrgId: string | null = null;
+const getCurrentOrgId = async (): Promise<string> => {
+  if (cachedOrgId) return cachedOrgId;
+
+  const { data: session } = await supabase.auth.getSession();
+  if (!session?.session?.user?.id) {
+    throw new Error("No authenticated user");
+  }
+
+  const { data: sale, error } = await supabase
+    .from("sales")
+    .select("organization_id")
+    .eq("user_id", session.session.user.id)
+    .single();
+
+  if (error || !sale?.organization_id) {
+    throw new Error("Failed to get organization ID");
+  }
+
+  cachedOrgId = String(sale.organization_id);
+  return cachedOrgId;
+};
+
+// Clear org cache on auth state change (e.g., logout/login)
+supabase.auth.onAuthStateChange(() => {
+  cachedOrgId = null;
+});
+
 const uploadToBucket = async (fi: RAFile) => {
   if (!fi.src.startsWith("blob:") && !fi.src.startsWith("data:")) {
     // Sign URL check if path exists in the bucket
@@ -375,6 +408,9 @@ const uploadToBucket = async (fi: RAFile) => {
     }
   }
 
+  // Get organization ID for multi-tenant file isolation
+  const orgId = await getCurrentOrgId();
+
   const dataContent = fi.src
     ? await fetch(fi.src).then((res) => res.blob())
     : fi.rawFile;
@@ -382,7 +418,8 @@ const uploadToBucket = async (fi: RAFile) => {
   const file = fi.rawFile;
   const fileExt = file.name.split(".").pop();
   const fileName = `${Math.random()}.${fileExt}`;
-  const filePath = `${fileName}`;
+  // Prefix file path with organization ID for multi-tenant isolation
+  const filePath = `${orgId}/${fileName}`;
   const { error: uploadError } = await supabase.storage
     .from("attachments")
     .upload(filePath, dataContent);

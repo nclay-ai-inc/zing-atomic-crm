@@ -1,13 +1,13 @@
 ---
 title: Configuring Supabase
-description: This document explains how to configure a remote Supabase instance for Atomic CRM.
+description: This document explains how to configure a remote Supabase instance for ZingIQ.
 ---
 
-Atomic CRM uses Supabase as a backend. This document explains how to configure a remote Supabase instance hosted at [supabase.com](https://supabase.com/).
+ZingIQ uses Supabase as a backend. This document explains how to configure a remote Supabase instance hosted at [supabase.com](https://supabase.com/).
 
 ## Creating a Remote Supabase Instance
 
-Atomic CRM comes with a CLI utility to create a backend instance on [supabase.com](https://supabase.com/):
+ZingIQ comes with a CLI utility to create a backend instance on [supabase.com](https://supabase.com/):
 
 ```sh
 make supabase-remote-init
@@ -19,7 +19,7 @@ The script cannot yet automate the configuration of the required SMTP provider o
 
 ## Alternative: Using An Existing Supabase Instance
 
-If you already created a project on [supabase.com](https://supabase.com/), you can configure the Atomic CRM frontend to use it.
+If you already created a project on [supabase.com](https://supabase.com/), you can configure the ZingIQ frontend to use it.
 
 First, log into your Supabase account:
 
@@ -47,7 +47,7 @@ VITE_SUPABASE_URL=<instance_url>
 VITE_SUPABASE_ANON_KEY=<instance_anon_token>
 ```
 
-Atomic CRM requires that you set up an email provider on your Supabase instance. If you don't have one yet, please follow the instructions detailed in the [Email Provider Setup](#email-provider-setup) section.
+ZingIQ requires that you set up an email provider on your Supabase instance. If you don't have one yet, please follow the instructions detailed in the [Email Provider Setup](#email-provider-setup) section.
 
 ## Testing Production Mode
 
@@ -65,7 +65,7 @@ Using a remote Supabase instance can be interesting if you deploy from your comp
 
 ## Email Provider Setup
 
-In order to support [the invitations workflow](../../users/user-management#adding-users) and the default email/password authentication (including password reset), Atomic CRM needs to be able to send emails from your Supabase instance.
+In order to support [the invitations workflow](../../users/user-management#adding-users) and the default email/password authentication (including password reset), ZingIQ needs to be able to send emails from your Supabase instance.
 
 By default, Supabase provides a simple SMTP server for all projects. But this server imposes a few important restrictions and is not meant for production use:
 - It can only send messages to pre-authorized addresses
@@ -91,7 +91,7 @@ Once you save these settings, your project's Auth server will send messages to a
 
 ## Setting The Login Callback
 
-Atomic CRM uses Supabase's authentication system. When a user logs in, Supabase redirects them to an authentication callback URL that is handled by the frontend.
+ZingIQ uses Supabase's authentication system. When a user logs in, Supabase redirects them to an authentication callback URL that is handled by the frontend.
 
 When developing with a local Supabase instance, the callback URL is already configured--you don't need to do anything.
 
@@ -101,11 +101,11 @@ When using a remote Supabase instance, you need to configure the callback URL as
 2. Go to **Authentication** > **URL Configuration**.
 3. Set up the callback URL of the production frontend in the **Site URL** field.
 
-If you host Atomic CRM under the `https://example.com/atomic-crm/` URL, the callback URL should be `https://example.com/atomic-crm/auth-callback.html`.
+If you host ZingIQ under the `https://example.com/atomic-crm/` URL, the callback URL should be `https://example.com/atomic-crm/auth-callback.html`.
 
 ## Customizing Email Templates
 
-Atomic CRM uses Supabase to send authentication-related emails (confirm signup, reset password, etc).
+ZingIQ uses Supabase to send authentication-related emails (confirm signup, reset password, etc).
 
 When developing with a local Supabase instance, you test your custom mail templates via the [supabase TOML config](https://github.com/marmelab/atomic-crm/blob/main/supabase/config.toml) file. An example of a custom template has been done for the [recovery](https://github.com/marmelab/atomic-crm/blob/main/supabase/templates/recovery.html) email. Note that you will need to restart your supabase instance to apply the changes.
 

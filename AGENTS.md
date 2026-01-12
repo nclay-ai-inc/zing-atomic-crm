@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-Atomic CRM is a full-featured CRM built with React, shadcn-admin-kit, and Supabase. It provides contact management, task tracking, notes, email capture, and deal management with a Kanban board.
+ZingIQ is a business intelligence platform for small businesses, built with React, shadcn-admin-kit, and Supabase. It provides contact management, task tracking, notes, email capture, deal management with a Kanban board, and analytics dashboards.
 
 ## Development Commands
 
@@ -56,6 +56,7 @@ make registry-build   # Build Shadcn registry
 - **UI Components**: Shadcn UI + Radix UI
 - **Styling**: Tailwind CSS v4
 - **Backend**: Supabase (PostgreSQL + REST API + Auth + Storage + Edge Functions)
+- **Analytics**: Jitsu CDP + ClickHouse
 - **Testing**: Vitest
 
 ### Directory Structure
@@ -64,8 +65,9 @@ make registry-build   # Build Shadcn registry
 src/
 ├── components/
 │   ├── admin/              # Shadcn Admin Kit components (mutable dependency)
-│   ├── atomic-crm/         # Main CRM application code (~15,000 LOC)
+│   ├── atomic-crm/         # Main application code (~15,000 LOC)
 │   │   ├── activity/       # Activity logs
+│   │   ├── analytics/      # Analytics dashboard
 │   │   ├── companies/      # Company management
 │   │   ├── contacts/       # Contact management (includes CSV import/export)
 │   │   ├── dashboard/      # Dashboard widgets

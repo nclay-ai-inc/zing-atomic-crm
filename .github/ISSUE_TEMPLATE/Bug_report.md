@@ -1,5 +1,5 @@
 ---
-name: "\U0001F41B Bug report"
+name: "Bug report"
 about: Something isn't working as expected. Please tell us!
 
 ---
@@ -28,7 +28,7 @@ insert short code snippets here
 
 **Environment**
 
-* atomic-crm version:
+* ZingIQ version:
 * Last version that did not exhibit the issue (if applicable):
 * React version:
 * Browser:

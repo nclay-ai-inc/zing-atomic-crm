@@ -1,11 +1,11 @@
 ---
 title: Inbound Email Configuration
-description: This document explains how to configure inbound email processing in Atomic CRM.
+description: This document explains how to configure inbound email processing in ZingIQ.
 ---
 
-Atomic CRM can receive inbound emails and automatically create or update contacts based on the email content. This feature is useful to keep your CRM up-to-date with the latest interactions with your contacts.
+ZingIQ can receive inbound emails and automatically create or update contacts based on the email content. This feature is useful to keep your CRM up-to-date with the latest interactions with your contacts.
 
-Atomic CRM uses [Postmark](https://postmarkapp.com/) to receive and process inbound emails.
+ZingIQ uses [Postmark](https://postmarkapp.com/) to receive and process inbound emails.
 
 ## Postmark Setup
 
@@ -29,7 +29,7 @@ To enable inbound email features, you need to create a webhook in Postmark.
 
 ## Supabase Setup
 
-Atomic CRM uses a Supabase Edge Function to handle the webhook and process the received emails. You need to configure your Supabase project to handle the incoming requests.
+ZingIQ uses a Supabase Edge Function to handle the webhook and process the received emails. You need to configure your Supabase project to handle the incoming requests.
 
 In a terminal, after [linking your Supabase project](../supabase-configuration#alternative-using-an-existing-supabase-instance), run the following commands:
 
